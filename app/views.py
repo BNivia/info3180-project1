@@ -11,19 +11,6 @@ from werkzeug.utils import secure_filename
 from app.models import Properties
 from .forms import NewProperty
 
-
-###
-# Helpers
-###
-def get_uploaded_images():
-    flist = []
-    for subdir,dirs,files in os.walk(os.path.join(app.config['UPLOAD_FOLDER'])):
-        for file in files:
-            flist.append(file)
-    return flist
-###
-
-
 ###
 # Routing for your application.
 ###
