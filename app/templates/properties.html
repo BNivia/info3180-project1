@@ -1,21 +1,25 @@
 {% extends "base.html" %} 
 {% block main %}
 
-<h1>Proprties</h1>
+<h1>Properties</h1>
 {% include 'flashes.html' %}
-
-{% for props in prop%}
-<div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="{{ url_for('get_image', filename= props.img) }}" alt="Images" />
-    <div class="card-body">
-        <h5 class="card-title">{{ props.title}}</h5>
-        <p class="card-text">{{ props.location}}</p>
-        <span class="badge badge-info">{{ props.price }}</span><br>
-        <a href="#" class="btn btn-info">View Property</a>
-    </div>
+<div class="card_set">
+    {% for props in prop%}
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{ url_for('get_image', filename= props.img) }}" alt="Images" />
+            <div class="card-body">
+                <h5 class="card-title">{{ props.title}}</h5>
+                <p class="card-text">{{ props.location}}</p>
+                <span class="badge badge-info">{{ props.price }}</span><br>
+                <a href="{{ url_for('getProperty', pid= props.pid)}}" class="btn btn-info">View Property</a>
+            </div>
+        </div>
+    {% endfor %}
 </div>
 
-{% endfor %}
+
+
+
 
 
     

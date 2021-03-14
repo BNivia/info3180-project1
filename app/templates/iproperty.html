@@ -1,0 +1,23 @@
+{% extends "base.html" %} 
+{% block main %}
+{% include 'flashes.html' %}
+<div class="card_set">
+    <div class="card" style="width: 18rem;">
+        <img class="card-img" src="{{ url_for('get_image', filename= result.img) }}" alt="Images" />
+        <div class="card-body">
+            <h5 class="card-title">{{ result.title}}</h5>
+            <div class="price-type">
+                <span class="badge badge-info">{{ result.price }}</span>
+                <span class="badge badge-warning">{{ result.ptype }}</span>
+            </div>
+            <p class="card-text">{{ result.location}}</p>
+            <div class="rooms">
+                <p>{{ result.beds }} Bedrooms</p>
+                <p>{{ result.baths }} Bathrooms</p>
+            </div>
+            <p> {{ result.location }}</p>
+            <a href="#" class="btn">Email Realtor</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

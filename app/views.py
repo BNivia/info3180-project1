@@ -61,7 +61,10 @@ def properties():
     prop = Properties.query.all()
     return render_template('properties.html', prop=prop)
 
-# @app.route('property/<propertyid>')
+@app.route('/propertyy/<pid>')
+def getProperty(pid):
+    result = Properties.query.filter_by(pid=pid).first()
+    return render_template('iproperty.html', result=result)
 
 @app.route('/uploads/<filename>')
 def get_image(filename):
