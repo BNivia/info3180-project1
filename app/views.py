@@ -4,9 +4,24 @@ Jinja2 Documentation:    http://jinja.pocoo.org/2/documentation/
 Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
 This file creates your application.
 """
+import os
+from app import app,db
+from flask import render_template, request, redirect, url_for,flash, session, abort, send_from_directory
+from werkzeug.utils import secure_filename
+from app.models import Properties
+from .forms import NewProperty
 
-from app import app
-from flask import render_template, request, redirect, url_for
+
+###
+# Helpers
+###
+def get_uploaded_images():
+    flist = []
+    for subdir,dirs,files in os.walk(os.path.join(app.config['UPLOAD_FOLDER'])):
+        for file in files:
+            flist.append(file)
+    return flist
+###
 
 
 ###
@@ -24,6 +39,34 @@ def about():
     """Render the website's about page."""
     return render_template('about.html', name="Mary Jane")
 
+@app.route('/propertyy', methods=['POST','GET'])
+def propertyy():
+    form = NewProperty()
+    if (request.method == 'POST'):
+        if (form.validate_on_submit()):
+            img = form.img.data
+            filename = secure_filename(img.filename)
+            img.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+            db.session.add(Properties(form.title.data, form.description.data, form.beds.data, form.baths.data, form.location.data, form.price.data, form.ptype.data,filename))
+            db.session.commit()
+            flash('Property added!', 'success')
+            return redirect(url_for('properties'))
+        else:
+            flash_errors(form)
+    return render_template('propertyy.html',form=form)
+
+@app.route('/properties')
+def properties():
+    prop = Properties.query.all()
+    return render_template('properties.html', prop=prop)
+
+# @app.route('property/<propertyid>')
+
+@app.route('/uploads/<filename>')
+def get_image(filename):
+    rootdir = os.getcwd()
+    return  send_from_directory(os.path.join(rootdir,app.config['UPLOAD_FOLDER']),filename)
 
 ###
 # The functions below should be applicable to all Flask apps.

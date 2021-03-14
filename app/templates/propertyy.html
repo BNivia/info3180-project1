@@ -1,0 +1,20 @@
+{% extends "base.html" %} 
+{% block main %}
+
+<h1>Add New Property</h1>
+<hr/>
+<p>Please fill out this form to add a new property...</p>
+<div class="form">
+  <form action="{{url_for('propertyy')}}" method="post" enctype="multipart/form-data">
+    {{ form.csrf_token }}
+    {% for input in form if input.widget.input_type != 'hidden' %}
+        <div class="field">
+            {{ input.label }}
+            {{ input }}
+        </div>
+    {% endfor %}
+    <button class="btn btn-primary" type="submit">Add Property</button>
+  </form>
+</div>
+
+{% endblock %}
