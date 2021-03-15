@@ -1,2 +1,2 @@
-release : python manage.py db upgrade --info3180-project1 migrations
+upgrade: python3 manage.py db upgrade
 web: gunicorn -w 4 -b "0.0.0.0:$PORT" app:app
