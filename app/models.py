@@ -2,7 +2,7 @@ from . import db
 
 class Properties(db.Model):
     pid = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    title = db.Column(db.String(50))
+    title = db.Column(db.String(60))
     description = db.Column(db.String(255))
     beds = db.Column(db.Integer)
     baths = db.Column(db.Integer)
