@@ -4,7 +4,7 @@ from flask_wtf.file import FileField, FileRequired, FileAllowed
 from wtforms.validators import DataRequired
 
 class NewProperty(FlaskForm):
-    title = StringField('Title', validators=[DataRequired()])
+    title = StringField('Property Title', validators=[DataRequired()])
     description = TextAreaField('Description', validators=[DataRequired()])
     beds = StringField('No. of Bedrooms', validators=[DataRequired()])
     baths = StringField('No. of Bathrooms', validators=[DataRequired()])

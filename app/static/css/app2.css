@@ -11,8 +11,26 @@ h1{
     background-color: #14B7A6;
 }
 
+.btn{
+    margin-top: 1rem;
+}
+
+.btn-m{
+    background-color: #14B7A6;
+    color: #fff;
+    width: 40%;
+    font-size: 15px;
+}
+
 .badge{
     background-color: #62A2F2;
+    color: #fff;
+    width: 5rem;
+    font-size:13px;
+}
+
+.badge-y{
+    background-color: #FBBC24;
     color: #fff;
     width: 5rem;
 }
@@ -23,29 +41,13 @@ h1{
 }
 
 .card-title{
-    font-size:16px;
+    font-size:20px;
     font-weight: 600;
 }
 .card-text{
     font-size: 13px;
     font-weight: 300;
-    color: #6A6A6C;
-}
-
-.card-footer{
-    background-color: #14B7A6;
-    color: #fff;
-}
-
-.card-footer a:link {
-    text-decoration: none;
-    color: #fff;
-}
-
-.card-footer a{
-    color: #fff;
-    margin: 0 auto;
-    font-weight: 500;
+    color: black;
 }
 
 .card_set{
@@ -64,7 +66,15 @@ textarea{
     height: 10rem;
 }
 
-.btn-m{
-    background-color: #14B7A6;
-    color: #fff;
+.card {
+    margin: 5rem auto;
+    flex-direction: row;
+    width: 50rem;
+}
+.card img {
+  width: 70%;
+}
+
+.rooms{
+    display: inline-flex;
 }

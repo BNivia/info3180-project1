@@ -2,12 +2,12 @@ from . import db
 
 class Properties(db.Model):
     pid = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    title = db.Column(db.String(20))
+    title = db.Column(db.String(50))
     description = db.Column(db.String(255))
     beds = db.Column(db.Integer)
     baths = db.Column(db.Integer)
     location = db.Column(db.String(50))
-    price = db.Column(db.String(10))
+    price = db.Column(db.String(20))
     ptype = db.Column(db.String(10))
     img = db.Column(db.String(255))
 

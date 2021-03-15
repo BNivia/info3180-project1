@@ -48,7 +48,7 @@ def properties():
     prop = Properties.query.all()
     return render_template('properties.html', prop=prop)
 
-@app.route('/propertyy/<pid>')
+@app.route('/propertyy/<pid>') #fix this should be propertyid
 def getProperty(pid):
     result = Properties.query.filter_by(pid=pid).first()
     return render_template('iproperty.html', result=result)
